@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "bird-finder-2.0"
+version = "0.1.0"
+description = "birding hotspots relative to current location"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+dlt = "^0.3.12"
+duckdb = "^0.8.0"
+python-dotenv = "^0.20.0"
+click = "^8.1.1"
+colorama = "^0.4.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.2.0"]
+build-backend = "poetry.core.masonry.api"
