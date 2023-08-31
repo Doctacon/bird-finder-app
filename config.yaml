@@ -2,7 +2,7 @@ gateways:
     local:
         connection:
             type: duckdb
-            database: db.db
+            database: ebirdapi.duckdb
 
 default_gateway: local
 
