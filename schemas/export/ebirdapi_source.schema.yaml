@@ -1,0 +1,199 @@
+version: 11
+version_hash: NGne6T9GQNXlpJxEi2RX+Kn/MdnT3GC9bYf6ZZsYukA=
+engine_version: 6
+name: ebirdapi_source
+tables:
+  _dlt_version:
+    columns:
+      version:
+        nullable: false
+        data_type: bigint
+      engine_version:
+        nullable: false
+        data_type: bigint
+      inserted_at:
+        nullable: false
+        data_type: timestamp
+      schema_name:
+        nullable: false
+        data_type: text
+      version_hash:
+        nullable: false
+        data_type: text
+      schema:
+        nullable: false
+        data_type: text
+    write_disposition: skip
+    description: Created by DLT. Tracks schema updates
+  _dlt_loads:
+    columns:
+      load_id:
+        nullable: false
+        data_type: text
+      schema_name:
+        nullable: true
+        data_type: text
+      status:
+        nullable: false
+        data_type: bigint
+      inserted_at:
+        nullable: false
+        data_type: timestamp
+      schema_version_hash:
+        nullable: true
+        data_type: text
+    write_disposition: skip
+    description: Created by DLT. Tracks completed loads
+  recent_observations:
+    columns:
+      species_code:
+        nullable: true
+        data_type: text
+      com_name:
+        nullable: true
+        data_type: text
+      sci_name:
+        nullable: true
+        data_type: text
+      loc_id:
+        nullable: true
+        data_type: text
+      loc_name:
+        nullable: true
+        data_type: text
+      obs_dt:
+        nullable: true
+        data_type: timestamp
+      how_many:
+        nullable: true
+        data_type: bigint
+      lat:
+        nullable: true
+        data_type: double
+      lng:
+        nullable: true
+        data_type: double
+      obs_valid:
+        nullable: true
+        data_type: bool
+      obs_reviewed:
+        nullable: true
+        data_type: bool
+      location_private:
+        nullable: true
+        data_type: bool
+      sub_id:
+        nullable: true
+        data_type: text
+      subnational2_code:
+        nullable: true
+        data_type: text
+      subnational2_name:
+        nullable: true
+        data_type: text
+      subnational1_code:
+        nullable: true
+        data_type: text
+      subnational1_name:
+        nullable: true
+        data_type: text
+      country_code:
+        nullable: true
+        data_type: text
+      country_name:
+        nullable: true
+        data_type: text
+      user_display_name:
+        nullable: true
+        data_type: text
+      obs_id:
+        nullable: true
+        data_type: text
+      checklist_id:
+        nullable: true
+        data_type: text
+      presence_noted:
+        nullable: true
+        data_type: bool
+      has_comments:
+        nullable: true
+        data_type: bool
+      first_name:
+        nullable: true
+        data_type: text
+      last_name:
+        nullable: true
+        data_type: text
+      has_rich_media:
+        nullable: true
+        data_type: bool
+      _dlt_load_id:
+        nullable: false
+        data_type: text
+      _dlt_id:
+        nullable: false
+        unique: true
+        data_type: text
+      evidence:
+        nullable: true
+        data_type: text
+    write_disposition: replace
+  taxonomy:
+    columns: {}
+    write_disposition: replace
+  taxa_local_codes:
+    columns:
+      code:
+        nullable: true
+        data_type: text
+      name:
+        nullable: true
+        data_type: text
+      last_update:
+        nullable: true
+        data_type: timestamp
+      _dlt_load_id:
+        nullable: false
+        data_type: text
+      _dlt_id:
+        nullable: false
+        unique: true
+        data_type: text
+    write_disposition: replace
+  taxonomy_versions:
+    columns:
+      authority_ver:
+        nullable: true
+        data_type: double
+      latest:
+        nullable: true
+        data_type: bool
+      _dlt_load_id:
+        nullable: false
+        data_type: text
+      _dlt_id:
+        nullable: false
+        unique: true
+        data_type: text
+    write_disposition: replace
+settings:
+  detections:
+  - timestamp
+  - iso_timestamp
+  default_hints:
+    not_null:
+    - _dlt_id
+    - _dlt_root_id
+    - _dlt_parent_id
+    - _dlt_list_idx
+    - _dlt_load_id
+    foreign_key:
+    - _dlt_parent_id
+    root_key:
+    - _dlt_root_id
+    unique:
+    - _dlt_id
+normalizers:
+  names: duck_case
+  json:
+    module: dlt.common.normalizers.json.relational

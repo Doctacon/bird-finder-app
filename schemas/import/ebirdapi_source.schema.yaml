@@ -1,0 +1,79 @@
+version: 2
+version_hash: ktQMAxjO+Ja1ND9MR5SndtwQwL4SmHpxTQ9k32YUm6o=
+engine_version: 6
+name: ebirdapi_source
+tables:
+  _dlt_version:
+    columns:
+      version:
+        nullable: false
+        data_type: bigint
+      engine_version:
+        nullable: false
+        data_type: bigint
+      inserted_at:
+        nullable: false
+        data_type: timestamp
+      schema_name:
+        nullable: false
+        data_type: text
+      version_hash:
+        nullable: false
+        data_type: text
+      schema:
+        nullable: false
+        data_type: text
+    write_disposition: skip
+    description: Created by DLT. Tracks schema updates
+  _dlt_loads:
+    columns:
+      load_id:
+        nullable: false
+        data_type: text
+      schema_name:
+        nullable: true
+        data_type: text
+      status:
+        nullable: false
+        data_type: bigint
+      inserted_at:
+        nullable: false
+        data_type: timestamp
+      schema_version_hash:
+        nullable: true
+        data_type: text
+    write_disposition: skip
+    description: Created by DLT. Tracks completed loads
+  recent_observations:
+    columns: {}
+    write_disposition: replace
+  taxonomy:
+    columns: {}
+    write_disposition: replace
+  taxa_local_codes:
+    columns: {}
+    write_disposition: replace
+  taxonomy_versions:
+    columns: {}
+    write_disposition: replace
+settings:
+  detections:
+  - timestamp
+  - iso_timestamp
+  default_hints:
+    not_null:
+    - _dlt_id
+    - _dlt_root_id
+    - _dlt_parent_id
+    - _dlt_list_idx
+    - _dlt_load_id
+    foreign_key:
+    - _dlt_parent_id
+    root_key:
+    - _dlt_root_id
+    unique:
+    - _dlt_id
+normalizers:
+  names: duck_case
+  json:
+    module: dlt.common.normalizers.json.relational

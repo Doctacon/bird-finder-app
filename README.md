@@ -7,6 +7,7 @@
 - Python 3.10
 - dlt 0.3.12
 - duckdb 0.8.0
+- sqlmesh
 - python-dotenv 0.20.0
 - click 8.1.1
 - colorama 0.4.4

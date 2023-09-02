@@ -83,7 +83,11 @@ def taxonomy_versions(api_secret_key=dlt.secrets.value):
 if __name__ == "__main__":
     # Configure the pipeline with your destination details
     pipeline = dlt.pipeline(
-        pipeline_name='ebirdapi', destination='duckdb', dataset_name='ebirdapi_data'
+        pipeline_name='ebirdapi',
+        destination='duckdb',
+        dataset_name='ebirdapi_data',
+        import_schema_path="schemas/import",
+        export_schema_path="schemas/export",
     )
 
     # Run the pipeline with your parameters
