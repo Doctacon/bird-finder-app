@@ -1,5 +1,5 @@
-version: 11
-version_hash: NGne6T9GQNXlpJxEi2RX+Kn/MdnT3GC9bYf6ZZsYukA=
+version: 5
+version_hash: DbcgeQhznBko33nT643YcgBDJmIxgXFf36tPY+U7/Fg=
 engine_version: 6
 name: ebirdapi_source
 tables:
@@ -137,9 +137,55 @@ tables:
       evidence:
         nullable: true
         data_type: text
+      exotic_category:
+        nullable: true
+        data_type: text
     write_disposition: replace
   taxonomy:
-    columns: {}
+    columns:
+      sci_name:
+        nullable: true
+        data_type: text
+      com_name:
+        nullable: true
+        data_type: text
+      species_code:
+        nullable: true
+        data_type: text
+      category:
+        nullable: true
+        data_type: text
+      taxon_order:
+        nullable: true
+        data_type: double
+      order:
+        nullable: true
+        data_type: text
+      family_code:
+        nullable: true
+        data_type: text
+      family_com_name:
+        nullable: true
+        data_type: text
+      family_sci_name:
+        nullable: true
+        data_type: text
+      _dlt_load_id:
+        nullable: false
+        data_type: text
+      _dlt_id:
+        nullable: false
+        unique: true
+        data_type: text
+      report_as:
+        nullable: true
+        data_type: text
+      extinct:
+        nullable: true
+        data_type: bool
+      extinct_year:
+        nullable: true
+        data_type: bigint
     write_disposition: replace
   taxa_local_codes:
     columns:
@@ -176,6 +222,82 @@ tables:
         unique: true
         data_type: text
     write_disposition: replace
+  _dlt_pipeline_state:
+    columns:
+      version:
+        nullable: false
+        data_type: bigint
+      engine_version:
+        nullable: false
+        data_type: bigint
+      pipeline_name:
+        nullable: false
+        data_type: text
+      state:
+        nullable: false
+        data_type: text
+      created_at:
+        nullable: false
+        data_type: timestamp
+      _dlt_load_id:
+        nullable: false
+        data_type: text
+      _dlt_id:
+        nullable: false
+        unique: true
+        data_type: text
+    write_disposition: append
+  taxonomy__com_name_codes:
+    columns:
+      value:
+        nullable: true
+        data_type: text
+      _dlt_id:
+        nullable: false
+        unique: true
+        data_type: text
+      _dlt_parent_id:
+        nullable: false
+        foreign_key: true
+        data_type: text
+      _dlt_list_idx:
+        nullable: false
+        data_type: bigint
+    parent: taxonomy
+  taxonomy__sci_name_codes:
+    columns:
+      value:
+        nullable: true
+        data_type: text
+      _dlt_id:
+        nullable: false
+        unique: true
+        data_type: text
+      _dlt_parent_id:
+        nullable: false
+        foreign_key: true
+        data_type: text
+      _dlt_list_idx:
+        nullable: false
+        data_type: bigint
+    parent: taxonomy
+  taxonomy__banding_codes:
+    columns:
+      value:
+        nullable: true
+        data_type: text
+      _dlt_id:
+        nullable: false
+        unique: true
+        data_type: text
+      _dlt_parent_id:
+        nullable: false
+        foreign_key: true
+        data_type: text
+      _dlt_list_idx:
+        nullable: false
+        data_type: bigint
+    parent: taxonomy
 settings:
   detections:
   - timestamp

@@ -36,7 +36,7 @@ def recent_observations(loc_code: str, api_secret_key=dlt.secrets.value):
 def taxonomy(api_secret_key=dlt.secrets.value):
     headers = _create_auth_headers(api_secret_key)
 
-    ebird_api_url = 'https://api.ebird.org/v2/ref/taxonomy/ebird'
+    ebird_api_url = 'https://api.ebird.org/v2/ref/taxonomy/ebird?fmt=json'
 
     try:
         response = req.get(ebird_api_url, headers=headers) #, params=params
