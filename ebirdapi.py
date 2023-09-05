@@ -1,6 +1,5 @@
 import dlt
 from dlt.sources.helpers import requests
-import requests as req
 
 @dlt.source
 def ebirdapi_source(loc_code: str = 'US-WA', api_secret_key=dlt.secrets.value):
@@ -22,15 +21,10 @@ def recent_observations(loc_code: str, api_secret_key=dlt.secrets.value):
 
     ebird_api_url = f'https://api.ebird.org/v2/data/obs/{loc_code}/recent/notable?detail=full'
 
-    try:
-        response = req.get(ebird_api_url, headers=headers) #, params=params
-        response.raise_for_status()
-        data = response.json()
-        yield data
-
-    except req.exceptions.RequestException as e:
-        print("Error fetching data from eBird API:", e)
-        yield []
+    response = requests.get(ebird_api_url, headers=headers) #, params=params
+    response.raise_for_status()
+    data = response.json()
+    yield data
 
 @dlt.resource(write_disposition="replace")
 def taxonomy(api_secret_key=dlt.secrets.value):
@@ -38,15 +32,10 @@ def taxonomy(api_secret_key=dlt.secrets.value):
 
     ebird_api_url = 'https://api.ebird.org/v2/ref/taxonomy/ebird?fmt=json'
 
-    try:
-        response = req.get(ebird_api_url, headers=headers) #, params=params
-        response.raise_for_status()
-        data = response.json()
-        yield data
-
-    except req.exceptions.RequestException as e:
-        print("Error fetching data from eBird API:", e)
-        yield []
+    response = requests.get(ebird_api_url, headers=headers) #, params=params
+    response.raise_for_status()
+    data = response.json()
+    yield data
 
 @dlt.resource(write_disposition="replace")
 def taxa_local_codes(api_secret_key=dlt.secrets.value):
@@ -54,15 +43,10 @@ def taxa_local_codes(api_secret_key=dlt.secrets.value):
 
     ebird_api_url = 'https://api.ebird.org/v2/ref/taxa-locales/ebird'
 
-    try:
-        response = req.get(ebird_api_url, headers=headers) #, params=params
-        response.raise_for_status()
-        data = response.json()
-        yield data
-
-    except req.exceptions.RequestException as e:
-        print("Error fetching data from eBird API:", e)
-        yield []
+    response = requests.get(ebird_api_url, headers=headers) #, params=params
+    response.raise_for_status()
+    data = response.json()
+    yield data
 
 @dlt.resource(write_disposition="replace")
 def taxonomy_versions(api_secret_key=dlt.secrets.value):
@@ -70,15 +54,10 @@ def taxonomy_versions(api_secret_key=dlt.secrets.value):
 
     ebird_api_url = 'https://api.ebird.org/v2/ref/taxonomy/versions'
 
-    try:
-        response = req.get(ebird_api_url, headers=headers) #, params=params
-        response.raise_for_status()
-        data = response.json()
-        yield data
-
-    except req.exceptions.RequestException as e:
-        print("Error fetching data from eBird API:", e)
-        yield []
+    response = requests.get(ebird_api_url, headers=headers) #, params=params
+    response.raise_for_status()
+    data = response.json()
+    yield data
 
 if __name__ == "__main__":
     # Configure the pipeline with your destination details

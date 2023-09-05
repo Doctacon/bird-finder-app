@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "bird-finder-2.0"
+name = "bird-finder-app"
 version = "0.1.0"
-description = "birding hotspots relative to current location"
-authors = ["Your Name <you@example.com>"]
+description = "eBird API information"
+authors = ["Connor <flocka_birdz@pm.me>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
