@@ -1,0 +1,25 @@
+version: 2
+models:
+  - name: _dlt_pipeline_state
+    columns:
+      - name: version
+        description: ''
+        data_type: BIGINT
+      - name: engine_version
+        description: ''
+        data_type: BIGINT
+      - name: pipeline_name
+        description: ''
+        data_type: VARCHAR
+      - name: state
+        description: ''
+        data_type: VARCHAR
+      - name: created_at
+        description: ''
+        data_type: TIMESTAMP WITH TIME ZONE
+      - name: _dlt_load_id
+        description: ''
+        data_type: VARCHAR
+      - name: _dlt_id
+        description: ''
+        data_type: VARCHAR

@@ -1,0 +1,4 @@
+version: 2
+models:
+  - name: _load_info__load_packages__tables__columns
+    columns: []

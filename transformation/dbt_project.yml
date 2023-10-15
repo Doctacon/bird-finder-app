@@ -31,7 +31,7 @@ vars:
 
 models:
   transformation:
-    +dbt-osmosis: "_{model}.yml"
+    +dbt-osmosis: "docs/{model}.yml"
     staging:
     dimensions:
     facts:

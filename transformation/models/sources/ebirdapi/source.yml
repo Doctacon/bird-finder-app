@@ -1,0 +1,517 @@
+version: 2
+
+sources:
+  - name: ebirdapi
+    database: ebirdapi
+    schema: ebirdapi_data
+    tables:
+      - name: _dlt_loads
+        columns:
+          - name: load_id
+            data_type: VARCHAR
+            description: ''
+          - name: schema_name
+            data_type: VARCHAR
+            description: ''
+          - name: status
+            data_type: BIGINT
+            description: ''
+          - name: inserted_at
+            data_type: TIMESTAMP WITH TIME ZONE
+            description: ''
+          - name: schema_version_hash
+            data_type: VARCHAR
+            description: ''
+      - name: _dlt_pipeline_state
+        columns:
+          - name: version
+            data_type: BIGINT
+            description: ''
+          - name: engine_version
+            data_type: BIGINT
+            description: ''
+          - name: pipeline_name
+            data_type: VARCHAR
+            description: ''
+          - name: state
+            data_type: VARCHAR
+            description: ''
+          - name: created_at
+            data_type: TIMESTAMP WITH TIME ZONE
+            description: ''
+          - name: _dlt_load_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+      - name: _dlt_version
+        columns:
+          - name: version
+            data_type: BIGINT
+            description: ''
+          - name: engine_version
+            data_type: BIGINT
+            description: ''
+          - name: inserted_at
+            data_type: TIMESTAMP WITH TIME ZONE
+            description: ''
+          - name: schema_name
+            data_type: VARCHAR
+            description: ''
+          - name: version_hash
+            data_type: VARCHAR
+            description: ''
+          - name: schema
+            data_type: VARCHAR
+            description: ''
+      - name: _load_info
+        columns:
+          - name: pipeline__pipeline_name
+            data_type: VARCHAR
+            description: ''
+          - name: destination_name
+            data_type: VARCHAR
+            description: ''
+          - name: destination_displayable_credentials
+            data_type: VARCHAR
+            description: ''
+          - name: destination_fingerprint
+            data_type: VARCHAR
+            description: ''
+          - name: dataset_name
+            data_type: VARCHAR
+            description: ''
+          - name: started_at
+            data_type: TIMESTAMP WITH TIME ZONE
+            description: ''
+          - name: first_run
+            data_type: BOOLEAN
+            description: ''
+          - name: _dlt_load_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+      - name: _load_info__load_packages
+        columns:
+          - name: load_id
+            data_type: VARCHAR
+            description: ''
+          - name: package_path
+            data_type: VARCHAR
+            description: ''
+          - name: state
+            data_type: VARCHAR
+            description: ''
+          - name: schema_name
+            data_type: VARCHAR
+            description: ''
+          - name: completed_at
+            data_type: TIMESTAMP WITH TIME ZONE
+            description: ''
+          - name: _dlt_parent_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_list_idx
+            data_type: BIGINT
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+      - name: _load_info__load_packages__jobs
+        columns:
+          - name: state
+            data_type: VARCHAR
+            description: ''
+          - name: file_path
+            data_type: VARCHAR
+            description: ''
+          - name: file_size
+            data_type: BIGINT
+            description: ''
+          - name: created_at
+            data_type: TIMESTAMP WITH TIME ZONE
+            description: ''
+          - name: elapsed
+            data_type: DOUBLE
+            description: ''
+          - name: table_name
+            data_type: VARCHAR
+            description: ''
+          - name: file_id
+            data_type: VARCHAR
+            description: ''
+          - name: retry_count
+            data_type: BIGINT
+            description: ''
+          - name: file_format
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_parent_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_list_idx
+            data_type: BIGINT
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+      - name: _load_info__load_packages__tables
+        columns:
+          - name: name
+            data_type: VARCHAR
+            description: ''
+          - name: write_disposition
+            data_type: VARCHAR
+            description: ''
+          - name: resource
+            data_type: VARCHAR
+            description: ''
+          - name: schema_name
+            data_type: VARCHAR
+            description: ''
+          - name: load_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_parent_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_list_idx
+            data_type: BIGINT
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+          - name: description
+            data_type: VARCHAR
+            description: ''
+          - name: parent
+            data_type: VARCHAR
+            description: ''
+      - name: _load_info__load_packages__tables__columns
+        columns:
+          - name: name
+            data_type: VARCHAR
+            description: ''
+          - name: data_type
+            data_type: VARCHAR
+            description: ''
+          - name: nullable
+            data_type: BOOLEAN
+            description: ''
+          - name: table_name
+            data_type: VARCHAR
+            description: ''
+          - name: schema_name
+            data_type: VARCHAR
+            description: ''
+          - name: load_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_parent_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_list_idx
+            data_type: BIGINT
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+          - name: unique
+            data_type: BOOLEAN
+            description: ''
+          - name: foreign_key
+            data_type: BOOLEAN
+            description: ''
+      - name: _load_info__loads_ids
+        columns:
+          - name: value
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_parent_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_list_idx
+            data_type: BIGINT
+            description: ''
+      - name: _new_tables
+        columns:
+          - name: name
+            data_type: VARCHAR
+            description: ''
+          - name: write_disposition
+            data_type: VARCHAR
+            description: ''
+          - name: resource
+            data_type: VARCHAR
+            description: ''
+          - name: schema_name
+            data_type: VARCHAR
+            description: ''
+          - name: load_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_load_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+          - name: description
+            data_type: VARCHAR
+            description: ''
+          - name: parent
+            data_type: VARCHAR
+            description: ''
+      - name: _new_tables__columns
+        columns:
+          - name: name
+            data_type: VARCHAR
+            description: ''
+          - name: data_type
+            data_type: VARCHAR
+            description: ''
+          - name: nullable
+            data_type: BOOLEAN
+            description: ''
+          - name: table_name
+            data_type: VARCHAR
+            description: ''
+          - name: schema_name
+            data_type: VARCHAR
+            description: ''
+          - name: load_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_parent_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_list_idx
+            data_type: BIGINT
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+          - name: unique
+            data_type: BOOLEAN
+            description: ''
+          - name: foreign_key
+            data_type: BOOLEAN
+            description: ''
+      - name: recent_observations
+        columns:
+          - name: species_code
+            data_type: VARCHAR
+            description: ''
+          - name: com_name
+            data_type: VARCHAR
+            description: ''
+          - name: sci_name
+            data_type: VARCHAR
+            description: ''
+          - name: loc_id
+            data_type: VARCHAR
+            description: ''
+          - name: loc_name
+            data_type: VARCHAR
+            description: ''
+          - name: obs_dt
+            data_type: TIMESTAMP WITH TIME ZONE
+            description: ''
+          - name: how_many
+            data_type: BIGINT
+            description: ''
+          - name: lat
+            data_type: DOUBLE
+            description: ''
+          - name: lng
+            data_type: DOUBLE
+            description: ''
+          - name: obs_valid
+            data_type: BOOLEAN
+            description: ''
+          - name: obs_reviewed
+            data_type: BOOLEAN
+            description: ''
+          - name: location_private
+            data_type: BOOLEAN
+            description: ''
+          - name: sub_id
+            data_type: VARCHAR
+            description: ''
+          - name: subnational2_code
+            data_type: VARCHAR
+            description: ''
+          - name: subnational2_name
+            data_type: VARCHAR
+            description: ''
+          - name: subnational1_code
+            data_type: VARCHAR
+            description: ''
+          - name: subnational1_name
+            data_type: VARCHAR
+            description: ''
+          - name: country_code
+            data_type: VARCHAR
+            description: ''
+          - name: country_name
+            data_type: VARCHAR
+            description: ''
+          - name: user_display_name
+            data_type: VARCHAR
+            description: ''
+          - name: obs_id
+            data_type: VARCHAR
+            description: ''
+          - name: checklist_id
+            data_type: VARCHAR
+            description: ''
+          - name: presence_noted
+            data_type: BOOLEAN
+            description: ''
+          - name: has_comments
+            data_type: BOOLEAN
+            description: ''
+          - name: first_name
+            data_type: VARCHAR
+            description: ''
+          - name: last_name
+            data_type: VARCHAR
+            description: ''
+          - name: has_rich_media
+            data_type: BOOLEAN
+            description: ''
+          - name: _dlt_load_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+          - name: evidence
+            data_type: VARCHAR
+            description: ''
+          - name: exotic_category
+            data_type: VARCHAR
+            description: ''
+      - name: taxa_local_codes
+        columns:
+          - name: code
+            data_type: VARCHAR
+            description: ''
+          - name: name
+            data_type: VARCHAR
+            description: ''
+          - name: last_update
+            data_type: TIMESTAMP WITH TIME ZONE
+            description: ''
+          - name: _dlt_load_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+      - name: taxonomy
+        columns:
+          - name: sci_name
+            data_type: VARCHAR
+            description: ''
+          - name: com_name
+            data_type: VARCHAR
+            description: ''
+          - name: species_code
+            data_type: VARCHAR
+            description: ''
+          - name: category
+            data_type: VARCHAR
+            description: ''
+          - name: taxon_order
+            data_type: DOUBLE
+            description: ''
+          - name: order
+            data_type: VARCHAR
+            description: ''
+          - name: family_code
+            data_type: VARCHAR
+            description: ''
+          - name: family_com_name
+            data_type: VARCHAR
+            description: ''
+          - name: family_sci_name
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_load_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+          - name: report_as
+            data_type: VARCHAR
+            description: ''
+          - name: extinct
+            data_type: BOOLEAN
+            description: ''
+          - name: extinct_year
+            data_type: BIGINT
+            description: ''
+      - name: taxonomy__banding_codes
+        columns:
+          - name: value
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_parent_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_list_idx
+            data_type: BIGINT
+            description: ''
+      - name: taxonomy__com_name_codes
+        columns:
+          - name: value
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_parent_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_list_idx
+            data_type: BIGINT
+            description: ''
+      - name: taxonomy__sci_name_codes
+        columns:
+          - name: value
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_parent_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_list_idx
+            data_type: BIGINT
+            description: ''
+      - name: taxonomy_versions
+        columns:
+          - name: authority_ver
+            data_type: DOUBLE
+            description: ''
+          - name: latest
+            data_type: BOOLEAN
+            description: ''
+          - name: _dlt_load_id
+            data_type: VARCHAR
+            description: ''
+          - name: _dlt_id
+            data_type: VARCHAR
+            description: ''
