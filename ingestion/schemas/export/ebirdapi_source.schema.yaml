@@ -1,5 +1,5 @@
-version: 7
-version_hash: A2gd86naXODutVXATvOkpzxgmCs2aZEudFmVCuFGNMI=
+version: 8
+version_hash: 7MBsRqsciLPLuVfknVhkFT12OFVnttysGiAz3osxva4=
 engine_version: 6
 name: ebirdapi_source
 tables:
@@ -576,6 +576,6 @@ settings:
     unique:
     - _dlt_id
 normalizers:
-  names: duck_case
+  names: snake_case
   json:
     module: dlt.common.normalizers.json.relational
