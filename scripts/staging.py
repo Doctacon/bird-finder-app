@@ -1,5 +1,6 @@
 import yaml
 import os
+import sys
 
 def generate_sql_staging_file(table_name, columns, reserved_words):
     def format_column_name(column_name):
@@ -12,7 +13,9 @@ def generate_sql_staging_file(table_name, columns, reserved_words):
     sql_template = f"with final as (\n    select\n{formatted_columns}\n    from {{{{ source('ebirdapi', '{table_name}') }}}}\n)\nselect * from final"
     return sql_template
 
-def main(yaml_file):
+def main():
+    args = sys.argv[1:]
+    yaml_file = args[0]
     with open(yaml_file, 'r') as stream:
         try:
             data = yaml.safe_load(stream)
@@ -32,5 +35,4 @@ def main(yaml_file):
             print(exc)
 
 if __name__ == "__main__":
-    yaml_file = "/Users/crlough/Code/GitHub/bird-finder-app/ingestion/schemas/export/ebirdapi_source.schema.yaml"  # Replace with the path to your YAML file
-    main(yaml_file)
+    main()
