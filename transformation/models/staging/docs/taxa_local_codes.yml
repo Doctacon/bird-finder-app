@@ -1,0 +1,19 @@
+version: 2
+models:
+  - name: taxa_local_codes
+    columns:
+      - name: code
+        description: ''
+        data_type: VARCHAR
+      - name: name
+        description: ''
+        data_type: VARCHAR
+      - name: last_update
+        description: ''
+        data_type: TIMESTAMP WITH TIME ZONE
+      - name: _dlt_load_id
+        description: ''
+        data_type: VARCHAR
+      - name: _dlt_id
+        description: ''
+        data_type: VARCHAR

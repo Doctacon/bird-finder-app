@@ -1,6 +1,6 @@
 with final as (
     select
-        name as 'name',
+        "name" as 'name',
         write_disposition as 'write_disposition',
         resource as 'resource',
         schema_name as 'schema_name',

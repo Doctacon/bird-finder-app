@@ -1,0 +1,16 @@
+version: 2
+models:
+  - name: taxonomy_versions
+    columns:
+      - name: authority_ver
+        description: ''
+        data_type: DOUBLE
+      - name: latest
+        description: ''
+        data_type: BOOLEAN
+      - name: _dlt_load_id
+        description: ''
+        data_type: VARCHAR
+      - name: _dlt_id
+        description: ''
+        data_type: VARCHAR

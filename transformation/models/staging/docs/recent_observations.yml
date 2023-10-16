@@ -1,0 +1,97 @@
+version: 2
+models:
+  - name: recent_observations
+    columns:
+      - name: species_code
+        description: ''
+        data_type: VARCHAR
+      - name: com_name
+        description: ''
+        data_type: VARCHAR
+      - name: sci_name
+        description: ''
+        data_type: VARCHAR
+      - name: loc_id
+        description: ''
+        data_type: VARCHAR
+      - name: loc_name
+        description: ''
+        data_type: VARCHAR
+      - name: obs_dt
+        description: ''
+        data_type: TIMESTAMP WITH TIME ZONE
+      - name: how_many
+        description: ''
+        data_type: BIGINT
+      - name: lat
+        description: ''
+        data_type: DOUBLE
+      - name: lng
+        description: ''
+        data_type: DOUBLE
+      - name: obs_valid
+        description: ''
+        data_type: BOOLEAN
+      - name: obs_reviewed
+        description: ''
+        data_type: BOOLEAN
+      - name: location_private
+        description: ''
+        data_type: BOOLEAN
+      - name: sub_id
+        description: ''
+        data_type: VARCHAR
+      - name: subnational2_code
+        description: ''
+        data_type: VARCHAR
+      - name: subnational2_name
+        description: ''
+        data_type: VARCHAR
+      - name: subnational1_code
+        description: ''
+        data_type: VARCHAR
+      - name: subnational1_name
+        description: ''
+        data_type: VARCHAR
+      - name: country_code
+        description: ''
+        data_type: VARCHAR
+      - name: country_name
+        description: ''
+        data_type: VARCHAR
+      - name: user_display_name
+        description: ''
+        data_type: VARCHAR
+      - name: obs_id
+        description: ''
+        data_type: VARCHAR
+      - name: checklist_id
+        description: ''
+        data_type: VARCHAR
+      - name: presence_noted
+        description: ''
+        data_type: BOOLEAN
+      - name: has_comments
+        description: ''
+        data_type: BOOLEAN
+      - name: first_name
+        description: ''
+        data_type: VARCHAR
+      - name: last_name
+        description: ''
+        data_type: VARCHAR
+      - name: has_rich_media
+        description: ''
+        data_type: BOOLEAN
+      - name: _dlt_load_id
+        description: ''
+        data_type: VARCHAR
+      - name: _dlt_id
+        description: ''
+        data_type: VARCHAR
+      - name: evidence
+        description: ''
+        data_type: VARCHAR
+      - name: exotic_category
+        description: ''
+        data_type: VARCHAR

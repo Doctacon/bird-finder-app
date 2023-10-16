@@ -5,7 +5,7 @@ with final as (
         species_code as 'species_code',
         category as 'category',
         taxon_order as 'taxon_order',
-        order as 'order',
+        "order" as 'order',
         family_code as 'family_code',
         family_com_name as 'family_com_name',
         family_sci_name as 'family_sci_name',

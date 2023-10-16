@@ -1,0 +1,46 @@
+version: 2
+models:
+  - name: taxonomy
+    columns:
+      - name: sci_name
+        data_type: VARCHAR
+        description: ''
+      - name: com_name
+        data_type: VARCHAR
+        description: ''
+      - name: species_code
+        data_type: VARCHAR
+        description: ''
+      - name: category
+        data_type: VARCHAR
+        description: ''
+      - name: taxon_order
+        data_type: DOUBLE
+        description: ''
+      - name: order
+        data_type: VARCHAR
+        description: ''
+      - name: family_code
+        data_type: VARCHAR
+        description: ''
+      - name: family_com_name
+        data_type: VARCHAR
+        description: ''
+      - name: family_sci_name
+        data_type: VARCHAR
+        description: ''
+      - name: _dlt_load_id
+        data_type: VARCHAR
+        description: ''
+      - name: _dlt_id
+        data_type: VARCHAR
+        description: ''
+      - name: report_as
+        data_type: VARCHAR
+        description: ''
+      - name: extinct
+        data_type: BOOLEAN
+        description: ''
+      - name: extinct_year
+        data_type: BIGINT
+        description: ''
