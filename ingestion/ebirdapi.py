@@ -1,4 +1,5 @@
 import dlt
+from dagster import asset
 from dlt.sources.helpers import requests
 from dlt.common.runtime.slack import send_slack_message
 
@@ -60,7 +61,8 @@ def taxonomy_versions(api_secret_key=dlt.secrets.value):
     data = response.json()
     yield data
 
-if __name__ == "__main__":
+@asset
+def ebirdapi_pipelines():
     # Configure the pipeline with your destination details
     pipeline = dlt.pipeline(
         pipeline_name='ebirdapi',
@@ -82,3 +84,6 @@ if __name__ == "__main__":
 
     # Pretty print the information on data that was loaded
     print(load_info)
+
+if __name__ == "__main__":
+    ebirdapi_pipelines()

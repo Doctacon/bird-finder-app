@@ -21,11 +21,15 @@ s3fs = "^2023.6.0"
 dagster = "^1.4.12"
 dagster-webserver = "^1.4.12"
 dbt-osmosis = "^0.12.4"
+dagster-dbt = "^0.21.3"
 
 [tool.poetry.dev-dependencies]
 
 [tool.poetry.scripts]
 gen-staging = "scripts.staging:main"
+
+[tool.dagster]
+module_name = "ingestion"
 
 [build-system]
 requires = ["poetry-core>=1.6.0"]
