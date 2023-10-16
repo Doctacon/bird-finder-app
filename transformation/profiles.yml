@@ -1,0 +1,7 @@
+birdfinder:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: '/Users/crlough/Code/GitHub/bird-finder-app/ingestion/ebirdapi.duckdb'
+      schema: 'transformations'
