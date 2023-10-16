@@ -2,7 +2,7 @@ import yaml
 import os
 
 def generate_sql_staging_file(table_name, columns):
-    sql_template = f"with final as (\nselect\n{columns}\nfrom {{{{ source('ebirdapi', '{table_name}') }}}}\n)\nselect * from final"
+    sql_template = f"with final as (\n    select\n{columns}\n    from {{{{ source('ebirdapi', '{table_name}') }}}}\n)\nselect * from final"
     return sql_template
 
 def main(yaml_file):
@@ -14,7 +14,7 @@ def main(yaml_file):
             os.makedirs(output_folder, exist_ok=True)
             
             for table_name, table_info in tables.items():
-                columns = ',\n'.join([f"{col} as '{col}'" for col in table_info.get('columns', {}).keys()])
+                columns = ',\n'.join([f"        {col} as '{col}'" for col in table_info.get('columns', {}).keys()])
                 sql_content = generate_sql_staging_file(table_name, columns)
                 sql_file_name = os.path.join(output_folder, f"{table_name}.sql")
                 with open(sql_file_name, 'w') as sql_file:
