@@ -29,8 +29,7 @@ with final as (
         has_rich_media as 'has_rich_media',
         _dlt_load_id as '_dlt_load_id',
         _dlt_id as '_dlt_id',
-        evidence as 'evidence',
-        exotic_category as 'exotic_category'
+        evidence as 'evidence'
     from {{ source('ebirdapi', 'recent_observations') }}
 )
 select * from final

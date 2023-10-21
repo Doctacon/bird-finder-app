@@ -22,6 +22,7 @@ dagster = "^1.4.12"
 dagster-webserver = "^1.4.12"
 dbt-osmosis = "^0.12.4"
 dagster-dbt = "^0.21.3"
+sqlmesh = "^0.44.3"
 
 [tool.poetry.dev-dependencies]
 
