@@ -30,6 +30,7 @@ vars:
       schema: "ebirdapi_data"
 
 models:
+  +start: Jan 1 2023
   transformation:
     +dbt-osmosis: "docs/{model}.yml"
     staging:

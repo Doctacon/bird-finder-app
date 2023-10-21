@@ -1,0 +1,193 @@
+- name: ebirdapi_data._dlt_loads
+  columns:
+    load_id: TEXT
+    schema_name: TEXT
+    status: BIGINT
+    inserted_at: TIMESTAMPTZ
+    schema_version_hash: TEXT
+- name: ebirdapi_data._dlt_pipeline_state
+  columns:
+    version: BIGINT
+    engine_version: BIGINT
+    pipeline_name: TEXT
+    state: TEXT
+    created_at: TIMESTAMPTZ
+    _dlt_load_id: TEXT
+    _dlt_id: TEXT
+- name: ebirdapi_data._dlt_version
+  columns:
+    version: BIGINT
+    engine_version: BIGINT
+    inserted_at: TIMESTAMPTZ
+    schema_name: TEXT
+    version_hash: TEXT
+    schema: TEXT
+- name: ebirdapi_data._load_info
+  columns:
+    pipeline__pipeline_name: TEXT
+    destination_name: TEXT
+    destination_displayable_credentials: TEXT
+    destination_fingerprint: TEXT
+    dataset_name: TEXT
+    started_at: TIMESTAMPTZ
+    first_run: BOOLEAN
+    _dlt_load_id: TEXT
+    _dlt_id: TEXT
+- name: ebirdapi_data._load_info__load_packages
+  columns:
+    load_id: TEXT
+    package_path: TEXT
+    state: TEXT
+    schema_name: TEXT
+    completed_at: TIMESTAMPTZ
+    _dlt_parent_id: TEXT
+    _dlt_list_idx: BIGINT
+    _dlt_id: TEXT
+- name: ebirdapi_data._load_info__load_packages__jobs
+  columns:
+    state: TEXT
+    file_path: TEXT
+    file_size: BIGINT
+    created_at: TIMESTAMPTZ
+    elapsed: DOUBLE
+    table_name: TEXT
+    file_id: TEXT
+    retry_count: BIGINT
+    file_format: TEXT
+    _dlt_parent_id: TEXT
+    _dlt_list_idx: BIGINT
+    _dlt_id: TEXT
+- name: ebirdapi_data._load_info__load_packages__tables
+  columns:
+    name: TEXT
+    resource: TEXT
+    schema_name: TEXT
+    load_id: TEXT
+    _dlt_parent_id: TEXT
+    _dlt_list_idx: BIGINT
+    _dlt_id: TEXT
+    parent: TEXT
+    description: TEXT
+    write_disposition: TEXT
+- name: ebirdapi_data._load_info__load_packages__tables__columns
+  columns:
+    name: TEXT
+    data_type: TEXT
+    nullable: BOOLEAN
+    table_name: TEXT
+    schema_name: TEXT
+    load_id: TEXT
+    _dlt_parent_id: TEXT
+    _dlt_list_idx: BIGINT
+    _dlt_id: TEXT
+    unique: BOOLEAN
+    foreign_key: BOOLEAN
+- name: ebirdapi_data._load_info__loads_ids
+  columns:
+    value: TEXT
+    _dlt_id: TEXT
+    _dlt_parent_id: TEXT
+    _dlt_list_idx: BIGINT
+- name: ebirdapi_data._new_tables
+  columns:
+    name: TEXT
+    resource: TEXT
+    schema_name: TEXT
+    load_id: TEXT
+    _dlt_load_id: TEXT
+    _dlt_id: TEXT
+    parent: TEXT
+    description: TEXT
+    write_disposition: TEXT
+- name: ebirdapi_data._new_tables__columns
+  columns:
+    name: TEXT
+    data_type: TEXT
+    nullable: BOOLEAN
+    table_name: TEXT
+    schema_name: TEXT
+    load_id: TEXT
+    _dlt_parent_id: TEXT
+    _dlt_list_idx: BIGINT
+    _dlt_id: TEXT
+    unique: BOOLEAN
+    foreign_key: BOOLEAN
+- name: ebirdapi_data.recent_observations
+  columns:
+    species_code: TEXT
+    com_name: TEXT
+    sci_name: TEXT
+    loc_id: TEXT
+    loc_name: TEXT
+    obs_dt: TIMESTAMPTZ
+    how_many: BIGINT
+    lat: DOUBLE
+    lng: DOUBLE
+    obs_valid: BOOLEAN
+    obs_reviewed: BOOLEAN
+    location_private: BOOLEAN
+    sub_id: TEXT
+    subnational2_code: TEXT
+    subnational2_name: TEXT
+    subnational1_code: TEXT
+    subnational1_name: TEXT
+    country_name: TEXT
+    user_display_name: TEXT
+    obs_id: TEXT
+    checklist_id: TEXT
+    presence_noted: BOOLEAN
+    has_comments: BOOLEAN
+    first_name: TEXT
+    last_name: TEXT
+    has_rich_media: BOOLEAN
+    _dlt_load_id: TEXT
+    _dlt_id: TEXT
+    evidence: TEXT
+    country_code: TEXT
+- name: ebirdapi_data.taxa_local_codes
+  columns:
+    code: TEXT
+    name: TEXT
+    last_update: TIMESTAMPTZ
+    _dlt_load_id: TEXT
+    _dlt_id: TEXT
+- name: ebirdapi_data.taxonomy
+  columns:
+    sci_name: TEXT
+    com_name: TEXT
+    species_code: TEXT
+    category: TEXT
+    taxon_order: DOUBLE
+    order: TEXT
+    family_code: TEXT
+    family_com_name: TEXT
+    family_sci_name: TEXT
+    _dlt_load_id: TEXT
+    _dlt_id: TEXT
+    report_as: TEXT
+    extinct: BOOLEAN
+    extinct_year: BIGINT
+- name: ebirdapi_data.taxonomy__banding_codes
+  columns:
+    value: TEXT
+    _dlt_id: TEXT
+    _dlt_parent_id: TEXT
+    _dlt_list_idx: BIGINT
+- name: ebirdapi_data.taxonomy__com_name_codes
+  columns:
+    value: TEXT
+    _dlt_id: TEXT
+    _dlt_parent_id: TEXT
+    _dlt_list_idx: BIGINT
+- name: ebirdapi_data.taxonomy__sci_name_codes
+  columns:
+    value: TEXT
+    _dlt_id: TEXT
+    _dlt_parent_id: TEXT
+    _dlt_list_idx: BIGINT
+- name: ebirdapi_data.taxonomy_versions
+  columns:
+    authority_ver: DOUBLE
+    latest: BOOLEAN
+    _dlt_load_id: TEXT
+    _dlt_id: TEXT
