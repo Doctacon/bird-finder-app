@@ -1,563 +1,512 @@
-version: 7
-version_hash: Ho9yj4uOkRsFHAQkKjrm1IRKop8bhczs5NZPEvueopM=
+version: 5
+version_hash: Q9IC0rkNOne1RAmqGtbQoRkAl37aHwj5W/DngFx1qs0=
 engine_version: 6
 name: ebirdapi_source
 tables:
   _dlt_version:
     columns:
       version:
-        data_type: bigint
         nullable: false
+        data_type: bigint
       engine_version:
+        nullable: false
         data_type: bigint
-        nullable: false
       inserted_at:
+        nullable: false
         data_type: timestamp
-        nullable: false
       schema_name:
-        data_type: text
         nullable: false
+        data_type: text
       version_hash:
-        data_type: text
         nullable: false
+        data_type: text
       schema:
-        data_type: text
         nullable: false
+        data_type: text
     write_disposition: skip
     description: Created by DLT. Tracks schema updates
   _dlt_loads:
     columns:
       load_id:
-        data_type: text
         nullable: false
+        data_type: text
       schema_name:
-        data_type: text
         nullable: true
+        data_type: text
       status:
+        nullable: false
         data_type: bigint
-        nullable: false
       inserted_at:
-        data_type: timestamp
         nullable: false
+        data_type: timestamp
       schema_version_hash:
-        data_type: text
         nullable: true
+        data_type: text
     write_disposition: skip
     description: Created by DLT. Tracks completed loads
   recent_observations:
     columns:
       species_code:
-        data_type: text
         nullable: true
+        data_type: text
       com_name:
-        data_type: text
         nullable: true
+        data_type: text
       sci_name:
-        data_type: text
         nullable: true
+        data_type: text
       loc_id:
-        data_type: text
         nullable: true
+        data_type: text
       loc_name:
-        data_type: text
         nullable: true
+        data_type: text
       obs_dt:
+        nullable: true
         data_type: timestamp
-        nullable: true
       how_many:
+        nullable: true
         data_type: bigint
-        nullable: true
       lat:
-        data_type: double
         nullable: true
+        data_type: double
       lng:
+        nullable: true
         data_type: double
-        nullable: true
       obs_valid:
-        data_type: bool
         nullable: true
+        data_type: bool
       obs_reviewed:
-        data_type: bool
         nullable: true
+        data_type: bool
       location_private:
-        data_type: bool
         nullable: true
+        data_type: bool
       sub_id:
-        data_type: text
         nullable: true
+        data_type: text
       subnational2_code:
-        data_type: text
         nullable: true
+        data_type: text
       subnational2_name:
-        data_type: text
         nullable: true
+        data_type: text
       subnational1_code:
-        data_type: text
         nullable: true
+        data_type: text
       subnational1_name:
-        data_type: text
         nullable: true
+        data_type: text
       country_code:
-        data_type: text
         nullable: true
+        data_type: text
       country_name:
-        data_type: text
         nullable: true
+        data_type: text
       user_display_name:
-        data_type: text
         nullable: true
+        data_type: text
       obs_id:
-        data_type: text
         nullable: true
+        data_type: text
       checklist_id:
-        data_type: text
         nullable: true
+        data_type: text
       presence_noted:
-        data_type: bool
         nullable: true
+        data_type: bool
       has_comments:
-        data_type: bool
         nullable: true
+        data_type: bool
       first_name:
-        data_type: text
         nullable: true
+        data_type: text
       last_name:
-        data_type: text
         nullable: true
+        data_type: text
       has_rich_media:
-        data_type: bool
         nullable: true
+        data_type: bool
       _dlt_load_id:
-        data_type: text
         nullable: false
-      _dlt_id:
         data_type: text
+      _dlt_id:
         nullable: false
         unique: true
+        data_type: text
       evidence:
-        data_type: text
         nullable: true
+        data_type: text
       exotic_category:
-        data_type: text
         nullable: true
+        data_type: text
     write_disposition: replace
   taxonomy:
     columns:
       sci_name:
-        data_type: text
         nullable: true
+        data_type: text
       com_name:
-        data_type: text
         nullable: true
+        data_type: text
       species_code:
-        data_type: text
         nullable: true
+        data_type: text
       category:
-        data_type: text
         nullable: true
+        data_type: text
       taxon_order:
+        nullable: true
         data_type: double
-        nullable: true
       order:
-        data_type: text
         nullable: true
+        data_type: text
       family_code:
-        data_type: text
         nullable: true
+        data_type: text
       family_com_name:
-        data_type: text
         nullable: true
+        data_type: text
       family_sci_name:
-        data_type: text
         nullable: true
+        data_type: text
       _dlt_load_id:
-        data_type: text
         nullable: false
-      _dlt_id:
         data_type: text
+      _dlt_id:
         nullable: false
         unique: true
-      report_as:
         data_type: text
+      report_as:
         nullable: true
+        data_type: text
       extinct:
+        nullable: true
         data_type: bool
-        nullable: true
       extinct_year:
-        data_type: bigint
         nullable: true
+        data_type: bigint
     write_disposition: replace
   taxa_local_codes:
     columns:
       code:
-        data_type: text
         nullable: true
+        data_type: text
       name:
-        data_type: text
         nullable: true
+        data_type: text
       last_update:
-        data_type: timestamp
         nullable: true
+        data_type: timestamp
       _dlt_load_id:
-        data_type: text
         nullable: false
-      _dlt_id:
         data_type: text
+      _dlt_id:
         nullable: false
         unique: true
+        data_type: text
     write_disposition: replace
   taxonomy_versions:
     columns:
       authority_ver:
+        nullable: true
         data_type: double
-        nullable: true
       latest:
-        data_type: bool
         nullable: true
+        data_type: bool
       _dlt_load_id:
-        data_type: text
         nullable: false
-      _dlt_id:
         data_type: text
+      _dlt_id:
         nullable: false
         unique: true
+        data_type: text
     write_disposition: replace
   _dlt_pipeline_state:
     columns:
       version:
-        data_type: bigint
         nullable: false
+        data_type: bigint
       engine_version:
+        nullable: false
         data_type: bigint
-        nullable: false
       pipeline_name:
-        data_type: text
         nullable: false
+        data_type: text
       state:
-        data_type: text
         nullable: false
+        data_type: text
       created_at:
+        nullable: false
         data_type: timestamp
-        nullable: false
       _dlt_load_id:
-        data_type: text
         nullable: false
-      _dlt_id:
         data_type: text
+      _dlt_id:
         nullable: false
         unique: true
+        data_type: text
     write_disposition: append
   taxonomy__com_name_codes:
     columns:
       value:
-        data_type: text
         nullable: true
-      _dlt_id:
         data_type: text
+      _dlt_id:
         nullable: false
         unique: true
-      _dlt_parent_id:
         data_type: text
+      _dlt_parent_id:
         nullable: false
         foreign_key: true
+        data_type: text
       _dlt_list_idx:
-        data_type: bigint
         nullable: false
+        data_type: bigint
     parent: taxonomy
   taxonomy__sci_name_codes:
     columns:
       value:
-        data_type: text
         nullable: true
-      _dlt_id:
         data_type: text
+      _dlt_id:
         nullable: false
         unique: true
-      _dlt_parent_id:
         data_type: text
+      _dlt_parent_id:
         nullable: false
         foreign_key: true
+        data_type: text
       _dlt_list_idx:
-        data_type: bigint
         nullable: false
+        data_type: bigint
     parent: taxonomy
   taxonomy__banding_codes:
     columns:
       value:
-        data_type: text
         nullable: true
-      _dlt_id:
         data_type: text
+      _dlt_id:
         nullable: false
         unique: true
-      _dlt_parent_id:
         data_type: text
+      _dlt_parent_id:
         nullable: false
         foreign_key: true
+        data_type: text
       _dlt_list_idx:
-        data_type: bigint
         nullable: false
+        data_type: bigint
     parent: taxonomy
   _load_info:
     columns:
       pipeline__pipeline_name:
-        data_type: text
         nullable: true
+        data_type: text
       destination_name:
-        data_type: text
         nullable: true
+        data_type: text
       destination_displayable_credentials:
-        data_type: text
         nullable: true
+        data_type: text
       destination_fingerprint:
-        data_type: text
         nullable: true
+        data_type: text
       dataset_name:
-        data_type: text
         nullable: true
+        data_type: text
       started_at:
+        nullable: true
         data_type: timestamp
-        nullable: true
       first_run:
-        data_type: bool
         nullable: true
+        data_type: bool
       _dlt_load_id:
-        data_type: text
         nullable: false
-      _dlt_id:
         data_type: text
+      _dlt_id:
         nullable: false
         unique: true
+        data_type: text
     write_disposition: append
   _load_info__loads_ids:
     columns:
       value:
-        data_type: text
         nullable: true
-      _dlt_id:
         data_type: text
+      _dlt_id:
         nullable: false
         unique: true
-      _dlt_parent_id:
         data_type: text
+      _dlt_parent_id:
         nullable: false
         foreign_key: true
+        data_type: text
       _dlt_list_idx:
-        data_type: bigint
         nullable: false
+        data_type: bigint
     parent: _load_info
   _load_info__load_packages:
     columns:
       load_id:
-        data_type: text
         nullable: true
+        data_type: text
       package_path:
-        data_type: text
         nullable: true
+        data_type: text
       state:
-        data_type: text
         nullable: true
+        data_type: text
       schema_name:
-        data_type: text
         nullable: true
+        data_type: text
       completed_at:
-        data_type: timestamp
         nullable: true
+        data_type: timestamp
       _dlt_parent_id:
-        data_type: text
         nullable: false
         foreign_key: true
-      _dlt_list_idx:
-        data_type: bigint
-        nullable: false
-      _dlt_id:
         data_type: text
+      _dlt_list_idx:
+        nullable: false
+        data_type: bigint
+      _dlt_id:
         nullable: false
         unique: true
+        data_type: text
     parent: _load_info
   _load_info__load_packages__jobs:
     columns:
       state:
-        data_type: text
         nullable: true
+        data_type: text
       file_path:
-        data_type: text
         nullable: true
+        data_type: text
       file_size:
-        data_type: bigint
         nullable: true
+        data_type: bigint
       created_at:
+        nullable: true
         data_type: timestamp
-        nullable: true
       elapsed:
+        nullable: true
         data_type: double
-        nullable: true
       table_name:
-        data_type: text
         nullable: true
+        data_type: text
       file_id:
-        data_type: text
         nullable: true
+        data_type: text
       retry_count:
+        nullable: true
         data_type: bigint
-        nullable: true
       file_format:
-        data_type: text
         nullable: true
-      _dlt_parent_id:
         data_type: text
+      _dlt_parent_id:
         nullable: false
         foreign_key: true
-      _dlt_list_idx:
-        data_type: bigint
-        nullable: false
-      _dlt_id:
         data_type: text
+      _dlt_list_idx:
+        nullable: false
+        data_type: bigint
+      _dlt_id:
         nullable: false
         unique: true
+        data_type: text
     parent: _load_info__load_packages
   _load_info__load_packages__tables:
     columns:
-      write_disposition:
-        data_type: text
-        nullable: true
       name:
-        data_type: text
         nullable: true
+        data_type: text
+      write_disposition:
+        nullable: true
+        data_type: text
       resource:
-        data_type: text
         nullable: true
+        data_type: text
+      description:
+        nullable: true
+        data_type: text
       schema_name:
-        data_type: text
         nullable: true
+        data_type: text
       load_id:
-        data_type: text
         nullable: true
-      _dlt_parent_id:
         data_type: text
+      _dlt_parent_id:
         nullable: false
         foreign_key: true
-      _dlt_list_idx:
-        data_type: bigint
-        nullable: false
-      _dlt_id:
         data_type: text
+      _dlt_list_idx:
+        nullable: false
+        data_type: bigint
+      _dlt_id:
         nullable: false
         unique: true
-      description:
         data_type: text
-        nullable: true
       parent:
-        data_type: text
         nullable: true
+        data_type: text
     parent: _load_info__load_packages
   _load_info__load_packages__tables__columns:
     columns:
-      name:
-        data_type: text
-        nullable: true
-      data_type:
-        data_type: text
-        nullable: true
       nullable:
+        nullable: true
         data_type: bool
+      partition:
         nullable: true
+        data_type: bool
+      cluster:
+        nullable: true
+        data_type: bool
+      unique:
+        nullable: true
+        data_type: bool
+      sort:
+        nullable: true
+        data_type: bool
+      primary_key:
+        nullable: true
+        data_type: bool
+      foreign_key:
+        nullable: true
+        data_type: bool
+      root_key:
+        nullable: true
+        data_type: bool
+      merge_key:
+        nullable: true
+        data_type: bool
+      name:
+        nullable: true
+        data_type: text
+      data_type:
+        nullable: true
+        data_type: text
       table_name:
-        data_type: text
         nullable: true
+        data_type: text
       schema_name:
-        data_type: text
         nullable: true
+        data_type: text
       load_id:
-        data_type: text
         nullable: true
-      _dlt_parent_id:
         data_type: text
+      _dlt_parent_id:
         nullable: false
         foreign_key: true
-      _dlt_list_idx:
-        data_type: bigint
-        nullable: false
-      _dlt_id:
         data_type: text
+      _dlt_list_idx:
+        nullable: false
+        data_type: bigint
+      _dlt_id:
         nullable: false
         unique: true
-      unique:
-        data_type: bool
-        nullable: true
-      foreign_key:
-        data_type: bool
-        nullable: true
+        data_type: text
     parent: _load_info__load_packages__tables
-  _new_tables:
-    columns:
-      write_disposition:
-        data_type: text
-        nullable: true
-      name:
-        data_type: text
-        nullable: true
-      resource:
-        data_type: text
-        nullable: true
-      schema_name:
-        data_type: text
-        nullable: true
-      load_id:
-        data_type: text
-        nullable: true
-      _dlt_load_id:
-        data_type: text
-        nullable: false
-      _dlt_id:
-        data_type: text
-        nullable: false
-        unique: true
-      description:
-        data_type: text
-        nullable: true
-      parent:
-        data_type: text
-        nullable: true
-    write_disposition: append
-  _new_tables__columns:
-    columns:
-      name:
-        data_type: text
-        nullable: true
-      data_type:
-        data_type: text
-        nullable: true
-      nullable:
-        data_type: bool
-        nullable: true
-      table_name:
-        data_type: text
-        nullable: true
-      schema_name:
-        data_type: text
-        nullable: true
-      load_id:
-        data_type: text
-        nullable: true
-      _dlt_parent_id:
-        data_type: text
-        nullable: false
-        foreign_key: true
-      _dlt_list_idx:
-        data_type: bigint
-        nullable: false
-      _dlt_id:
-        data_type: text
-        nullable: false
-        unique: true
-      unique:
-        data_type: bool
-        nullable: true
-      foreign_key:
-        data_type: bool
-        nullable: true
-    parent: _new_tables
 settings:
   detections:
   - timestamp
@@ -576,7 +525,6 @@ settings:
     unique:
     - _dlt_id
 normalizers:
-  names: snake_case
+  names: duck_case
   json:
     module: dlt.common.normalizers.json.relational
-    config: {}
