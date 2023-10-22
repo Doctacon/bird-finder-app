@@ -29,7 +29,7 @@ dagster-dbt = "^0.21.3"
 gen-staging = "scripts.staging:main"
 
 [tool.dagster]
-module_name = "ingestion"
+module_name = "orchestration"
 
 [build-system]
 requires = ["poetry-core>=1.6.0"]
