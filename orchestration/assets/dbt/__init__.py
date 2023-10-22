@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-from dagster_dbt import DbtCliResource
 from dagster import AssetExecutionContext, load_assets_from_modules
 from dagster_dbt import DbtCliResource, dbt_assets
 

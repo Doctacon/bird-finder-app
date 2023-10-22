@@ -10,7 +10,7 @@ def generate_sql_staging_file(table_name, columns, reserved_words):
             return column_name
     
     formatted_columns = ',\n'.join([f"        {format_column_name(col)} as '{col}'" for col in columns])
-    sql_template = f"with final as (\n    select\n{formatted_columns}\n    from {{{{ source('ebirdapi', '{table_name}') }}}}\n)\nselect * from final"
+    sql_template = f"with source as (\n    select * from {{{{ source('ebirdapi', '{table_name}') }}}}\n),\n\nfinal as (\n    select\n{formatted_columns}\n    from source\n)\n\nselect * from final"
     return sql_template
 
 def main():
