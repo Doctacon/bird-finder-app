@@ -61,7 +61,7 @@ def taxonomy_versions(api_secret_key=dlt.secrets.value):
     data = response.json()
     yield data
 
-@asset
+@asset(compute_kind="python")
 def ebirdapi_pipelines():
     # Configure the pipeline with your destination details
     pipeline = dlt.pipeline(

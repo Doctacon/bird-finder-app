@@ -6,6 +6,9 @@ sources:
     schema: ebirdapi_data
     tables:
       - name: _dlt_loads
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: load_id
             data_type: VARCHAR
@@ -23,6 +26,9 @@ sources:
             data_type: VARCHAR
             description: ''
       - name: _dlt_pipeline_state
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: version
             data_type: BIGINT
@@ -46,6 +52,9 @@ sources:
             data_type: VARCHAR
             description: ''
       - name: _dlt_version
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: version
             data_type: BIGINT
@@ -66,6 +75,9 @@ sources:
             data_type: VARCHAR
             description: ''
       - name: _load_info
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: pipeline__pipeline_name
             data_type: VARCHAR
@@ -95,6 +107,9 @@ sources:
             data_type: VARCHAR
             description: ''
       - name: _load_info__load_packages
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: load_id
             data_type: VARCHAR
@@ -121,6 +136,9 @@ sources:
             data_type: VARCHAR
             description: ''
       - name: _load_info__load_packages__jobs
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: state
             data_type: VARCHAR
@@ -159,6 +177,9 @@ sources:
             data_type: VARCHAR
             description: ''
       - name: _load_info__load_packages__tables
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: name
             data_type: VARCHAR
@@ -191,6 +212,9 @@ sources:
             data_type: VARCHAR
             description: ''
       - name: _load_info__load_packages__tables__columns
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: name
             data_type: VARCHAR
@@ -226,6 +250,9 @@ sources:
             data_type: BOOLEAN
             description: ''
       - name: _load_info__loads_ids
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: value
             data_type: VARCHAR
@@ -240,6 +267,9 @@ sources:
             data_type: BIGINT
             description: ''
       - name: _new_tables
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: name
             data_type: VARCHAR
@@ -269,6 +299,9 @@ sources:
             data_type: VARCHAR
             description: ''
       - name: _new_tables__columns
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: name
             data_type: VARCHAR
@@ -304,6 +337,9 @@ sources:
             data_type: BOOLEAN
             description: ''
       - name: recent_observations
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: species_code
             data_type: VARCHAR
@@ -399,6 +435,9 @@ sources:
             data_type: VARCHAR
             description: ''
       - name: taxa_local_codes
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: code
             data_type: VARCHAR
@@ -416,6 +455,9 @@ sources:
             data_type: VARCHAR
             description: ''
       - name: taxonomy
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: sci_name
             data_type: VARCHAR
@@ -460,6 +502,9 @@ sources:
             data_type: BIGINT
             description: ''
       - name: taxonomy__banding_codes
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: value
             data_type: VARCHAR
@@ -474,6 +519,9 @@ sources:
             data_type: BIGINT
             description: ''
       - name: taxonomy__com_name_codes
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: value
             data_type: VARCHAR
@@ -488,6 +536,9 @@ sources:
             data_type: BIGINT
             description: ''
       - name: taxonomy__sci_name_codes
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: value
             data_type: VARCHAR
@@ -502,6 +553,9 @@ sources:
             data_type: BIGINT
             description: ''
       - name: taxonomy_versions
+        meta:
+          dagster:
+            asset_key: ["ebirdapi_pipelines"]
         columns:
           - name: authority_ver
             data_type: DOUBLE
