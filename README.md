@@ -22,11 +22,11 @@ poetry install
 
 ## Usage
 
-You can run the main script to fetch and load bird observation data as follows:
-
-```bash
-python main.py
-```
+1. Activate your poetry shell (or add `~/$ poetry run` to every command)
+2. Ingest data from ebirdapi `~/orchestration/assets/ebirdapi$ python3 ebirdapi.py `
+3. Create staging layer files `~/$ gen-staging {file-path-to-ebirdapi_source.schema.yaml}`
+4. Materialize staging layer `~/transformation$ dbt run`
+5. Update staging layer docs `~/transformations$ dbt-osmosis yaml refactor --fqn staging`
 
 You can specify the location code using the `loc_code` parameter. Please refer to the eBird API documentation for valid location codes.
 
@@ -45,6 +45,10 @@ Feel free to contribute to the project by opening issues or submitting pull requ
 ## Authors
 
 - Connor Lough
+
+## Roadmap
+
+1. Containerize assets and orchestrator
 
 ## Acknowledgements
 
