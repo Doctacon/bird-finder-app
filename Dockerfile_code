@@ -17,7 +17,9 @@ RUN pip install -r requirements.txt
 
 WORKDIR /opt/dagster/app
 
-COPY orchestration /opt/dagster/app
+COPY orchestration /opt/dagster/app/orchestration
+COPY transformation /opt/dagster/app/transformation
+RUN touch __init__.py
 
 # Run dagster gRPC server on port 4000
 
@@ -25,4 +27,5 @@ EXPOSE 4000
 
 # CMD allows this to be overridden from run launchers or executors that want
 # to run other commands against your repository
-CMD ["dagster", "api", "grpc", "-h", "0.0.0.0", "-p", "4000", "-f", "orchestration/__init__.py"]
+# CMD ["sleep", "infinity"]
+CMD ["dagster", "api", "grpc", "-h", "0.0.0.0", "-p", "4000", "-f", "/opt/dagster/app/orchestration/__init__.py"]

@@ -3,4 +3,4 @@ load_from:
   - grpc_server:
       host: docker_code
       port: 4000
-      location_name: "code"
+      location_name: "orchestration"
