@@ -21,6 +21,7 @@ dagster-embedded-elt = ">=0.24,<1.0"
 dbt-osmosis = "^0.12.4"
 dagster-dbt = ">=0.21,<1.0"
 numpy = ">=1.26,<2.0"
+psutil = "^6.0.0"
 
 
 [tool.poetry.dev-dependencies]

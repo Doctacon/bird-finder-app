@@ -3,5 +3,5 @@ birdfinder:
   outputs:
     dev:
       type: duckdb
-      path: '/Users/crlough/Code/GitHub/bird-finder-app/ingestion/ebirdapi.duckdb'
+      path: '/Users/crlough/Code/GitHub/bird-finder-app/ebirdapi.duckdb'
       schema: 'transformations'
