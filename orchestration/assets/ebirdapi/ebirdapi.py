@@ -1,7 +1,10 @@
 import dlt
-from dagster import asset
+from dagster import AssetExecutionContext, SourceAsset, AssetKey
 from dlt.sources.helpers import requests
-from dlt.common.runtime.slack import send_slack_message
+from dagster_embedded_elt.dlt import DagsterDltResource, dlt_assets, DagsterDltTranslator
+from typing import Iterable
+
+dlt_resource = DagsterDltResource()
 
 @dlt.source
 def ebirdapi_source(loc_code: str = 'US-WA', api_secret_key=dlt.secrets.value):
@@ -61,10 +64,17 @@ def taxonomy_versions(api_secret_key=dlt.secrets.value):
     data = response.json()
     yield data
 
-@asset(compute_kind="python")
-def ebirdapi_pipelines():
-    # Configure the pipeline with your destination details
-    pipeline = dlt.pipeline(
+ebird_api = ebirdapi_source()
+
+ebird_upstream_asset = SourceAsset(key="ebird_api")
+
+class EbirdDagsterDltTranslator(DagsterDltTranslator):
+    def get_deps_asset_keys(self, resource: DagsterDltResource) -> Iterable[AssetKey]:
+        return [AssetKey("ebird_api")]
+
+@dlt_assets(
+    dlt_source=ebird_api,
+    dlt_pipeline=dlt.pipeline(
         pipeline_name='ebirdapi',
         destination='duckdb',
         # staging='filesystem',
@@ -72,18 +82,10 @@ def ebirdapi_pipelines():
         import_schema_path="schemas/import",
         export_schema_path="schemas/export",
         # full_refresh=True,
-    )
-
-    # Run the pipeline with your parameters
-    load_info = pipeline.run(ebirdapi_source()) #, loader_file_format="parquet")
-    pipeline.run([load_info], table_name="_load_info")
-
-    # save just the new tables
-    table_updates = [p.asdict()["tables"] for p in load_info.load_packages]
-    pipeline.run(table_updates, table_name="_new_tables")
-
-    # Pretty print the information on data that was loaded
-    print(load_info)
-
-if __name__ == "__main__":
-    ebirdapi_pipelines()
+        progress="log",
+    ),
+    name="ebird_api",
+    dlt_dagster_translator=EbirdDagsterDltTranslator(),
+)
+def dagster_ebirdapi_assets(context: AssetExecutionContext, dlt: DagsterDltResource):
+    yield from dlt.run(context=context)

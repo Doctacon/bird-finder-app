@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 from dagster import AssetExecutionContext, load_assets_from_modules
-from dagster_dbt import DbtCliResource, dbt_assets
+from dagster_dbt import DbtCliResource, dbt_assets, DagsterDbtTranslator, DagsterDbtTranslatorSettings
 
 dbt_project_dir = Path(__file__).joinpath("..", "..", "..", "..", "transformation").resolve()
 dbt = DbtCliResource(project_dir=os.fspath(dbt_project_dir))
@@ -15,6 +15,13 @@ if os.getenv("DAGSTER_DBT_PARSE_PROJECT_ON_LOAD"):
 else:
     dbt_manifest_path = dbt_project_dir.joinpath("target", "manifest.json")
 
-@dbt_assets(manifest=dbt_manifest_path)
+dagster_dbt_translator = DagsterDbtTranslator(
+    settings=DagsterDbtTranslatorSettings(enable_duplicate_source_asset_keys=True)
+)
+
+@dbt_assets(
+    manifest=dbt_manifest_path,
+    dagster_dbt_translator=dagster_dbt_translator,
+)
 def transformation_dbt_assets(context: AssetExecutionContext, dbt: DbtCliResource):
     yield from dbt.cli(["build"], context=context).stream()
