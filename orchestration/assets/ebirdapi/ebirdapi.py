@@ -2,12 +2,14 @@ import dlt
 from dagster import AssetExecutionContext, SourceAsset, AssetKey
 from dlt.sources.helpers import requests
 from dagster_embedded_elt.dlt import DagsterDltResource, dlt_assets, DagsterDltTranslator
+
 from typing import Iterable
+from datetime import datetime
 
 dlt_resource = DagsterDltResource()
 
 @dlt.source
-def ebirdapi_source(loc_code: str = 'US-WA', api_secret_key=dlt.secrets.value):
+def ebirdapi_source(loc_code=dlt.secrets.value, api_secret_key=dlt.secrets.value):
     return (
         recent_observations(loc_code, api_secret_key),
         taxonomy(api_secret_key),
@@ -20,11 +22,23 @@ def _create_auth_headers(api_secret_key):
     headers = {"X-eBirdApiToken": f"{api_secret_key}"}
     return headers
 
-@dlt.resource(write_disposition="replace")
-def recent_observations(loc_code: str, api_secret_key=dlt.secrets.value):
+@dlt.resource(write_disposition="merge", primary_key="obsId")
+def recent_observations(
+    loc_code=dlt.secrets.value,
+    api_secret_key=dlt.secrets.value,
+    updated_at = dlt.sources.incremental("obsDt", initial_value="1970-01-01T00:00:00Z")
+):
     headers = _create_auth_headers(api_secret_key)
 
-    ebird_api_url = f'https://api.ebird.org/v2/data/obs/{loc_code}/recent/notable?detail=full'
+    latest_datetime = datetime.strptime(updated_at.last_value, "%Y-%m-%dT%H:%M:%SZ")
+    difference_in_days = (datetime.now() - latest_datetime).days
+    back_days = 30 - difference_in_days
+    if updated_at.last_value == "1970-01-01T00:00:00Z":
+        back_days = 30
+    if back_days <= 0:
+        back_days = 1
+
+    ebird_api_url = f'https://api.ebird.org/v2/data/obs/{loc_code}/recent/notable?detail=full&back={back_days}'
 
     response = requests.get(ebird_api_url, headers=headers) #, params=params
     response.raise_for_status()
