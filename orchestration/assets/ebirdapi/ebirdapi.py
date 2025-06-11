@@ -26,11 +26,11 @@ def _create_auth_headers(api_secret_key):
 def recent_observations(
     loc_code=dlt.secrets.value,
     api_secret_key=dlt.secrets.value,
-    updated_at = dlt.sources.incremental("obsDt", initial_value="1970-01-01T00:00:00Z")
+    updated_at = dlt.sources.incremental("obsDt", initial_value="1970-01-01 00:00")
 ):
     headers = _create_auth_headers(api_secret_key)
 
-    latest_datetime = datetime.strptime(updated_at.last_value, "%Y-%m-%dT%H:%M:%SZ")
+    latest_datetime = datetime.strptime(updated_at.last_value, "%Y-%m-%d %H:%M")
     difference_in_days = (datetime.now() - latest_datetime).days
     back_days = 30 - difference_in_days
     if updated_at.last_value == "1970-01-01T00:00:00Z":

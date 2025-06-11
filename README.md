@@ -3,30 +3,31 @@
 ## Description
 `bird-finder-2.0` is a demo of the dlt (data load tool) package to locate birding hotspots relative to a given location. It leverages the eBird API to fetch recent observations of notable birds in the specified location and supports various destinations like DuckDB.
 
+> **Note**: This project has been migrated from Poetry to UV for faster package management and dependency resolution.
+
 ## Requirements
-- Python 3.10
-- dlt 0.3.12
-- duckdb 0.8.0
-- sqlmesh
-- python-dotenv 0.20.0
-- click 8.1.1
-- colorama 0.4.4
+- Python 3.12+
+- UV package manager
 
 ## Installation
 
-Use the package manager [poetry](https://python-poetry.org/) to install `bird-finder-2.0`.
+Use the package manager [UV](https://docs.astral.sh/uv/) to install `bird-finder-2.0`.
 
 ```bash
-poetry install
+# Install UV (if not already installed)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install project dependencies
+uv sync
 ```
 
 ## Usage
 
-1. Activate your poetry shell (or add `~/$ poetry run` to every command)
-2. Ingest data from ebirdapi `~/orchestration/assets/ebirdapi$ python3 ebirdapi.py `
-3. Create staging layer files `~/$ gen-staging {file-path-to-ebirdapi_source.schema.yaml}`
-4. Materialize staging layer `~/transformation$ dbt run`
-5. Update staging layer docs `~/transformations$ dbt-osmosis yaml refactor --fqn staging`
+1. Use `uv run` to execute commands in the project environment
+2. Ingest data from ebirdapi `~/orchestration/assets/ebirdapi$ uv run python ebirdapi.py `
+3. Create staging layer files `~/$ uv run gen-staging {file-path-to-ebirdapi_source.schema.yaml}`
+4. Materialize staging layer `~/transformation$ uv run dbt run`
+5. Update staging layer docs `~/transformations$ uv run dbt-osmosis yaml refactor --fqn staging`
 
 You can specify the location code using the `loc_code` parameter. Please refer to the eBird API documentation for valid location codes.
 
@@ -35,7 +36,7 @@ You can specify the location code using the `loc_code` parameter. Please refer t
 To install development dependencies and set up a development environment, use:
 
 ```bash
-poetry install --dev
+uv sync --dev
 ```
 
 ## Contributions

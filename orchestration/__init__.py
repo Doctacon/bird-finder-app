@@ -18,7 +18,7 @@ ebird_job = define_asset_job("ebird_job", selection=AssetSelection.all())
 # Addition: a ScheduleDefinition the job it should run and a cron schedule of how frequently to run it
 ebird_schedule = ScheduleDefinition(
     job=ebird_job,
-    cron_schedule="0 * * * *",
+    cron_schedule="0 0 * * *",
     default_status=DefaultScheduleStatus.RUNNING
 )
 
