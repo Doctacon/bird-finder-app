@@ -1,60 +1,157 @@
-# bird-finder-2.0
+# Bird Finder App
 
-## Description
-`bird-finder-2.0` is a demo of the dlt (data load tool) package to locate birding hotspots relative to a given location. It leverages the eBird API to fetch recent observations of notable birds in the specified location and supports various destinations like DuckDB.
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/release/python-3120/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-> **Note**: This project has been migrated from Poetry to UV for faster package management and dependency resolution.
+A comprehensive bird finding application that leverages the eBird API to locate birding hotspots and analyze bird observation patterns. Built with modern data engineering tools including DLT, DBT, and Dagster.
 
-## Requirements
+## 🚀 Features
+
+- **Data Ingestion**: Automated data collection from eBird API using DLT (Data Load Tool)
+- **Data Orchestration**: Pipeline management and scheduling with Dagster
+- **Data Transformation**: Analytics-ready data models using DBT
+- **Database Support**: Fast analytics with DuckDB
+- **Modern Tooling**: Built with UV for fast dependency management
+
+## 📁 Project Structure
+
+```
+bird-finder-app/
+├── src/bird_finder/          # Main Python package
+│   ├── orchestration/        # Dagster pipeline definitions
+│   ├── transformation/       # DBT transformations
+│   ├── scripts/              # Utility scripts
+│   └── utils/                # Common utilities
+├── tests/                    # Test suite
+├── docs/                     # Documentation
+├── examples/                 # Usage examples
+├── schemas/                  # Data schemas
+├── pyproject.toml           # Project configuration
+├── LICENSE                  # MIT License
+└── README.md               # This file
+```
+
+## 🛠 Installation
+
+### Prerequisites
+
 - Python 3.12+
-- UV package manager
+- [UV package manager](https://docs.astral.sh/uv/)
 
-## Installation
+### Quick Start
 
-Use the package manager [UV](https://docs.astral.sh/uv/) to install `bird-finder-2.0`.
+1. **Install UV** (if not already installed):
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+
+2. **Clone and install**:
+   ```bash
+   git clone https://github.com/doctacon/bird-finder-app.git
+   cd bird-finder-app
+   uv sync
+   ```
+
+3. **Install development dependencies**:
+   ```bash
+   uv sync --dev
+   ```
+
+## 📖 Usage
+
+### Data Pipeline
+
+1. **Ingest eBird data**:
+   ```bash
+   uv run python -m bird_finder.orchestration.assets.ebirdapi
+   ```
+
+2. **Generate staging layer**:
+   ```bash
+   uv run gen-staging schemas/export/ebirdapi_source.schema.yaml
+   ```
+
+3. **Run DBT transformations**:
+   ```bash
+   cd src/bird_finder/transformation
+   uv run dbt run
+   ```
+
+4. **Update documentation**:
+   ```bash
+   cd src/bird_finder/transformation
+   uv run dbt-osmosis yaml refactor --fqn staging
+   ```
+
+### Configuration
+
+The application supports configuration through environment variables and the eBird API. 
+Refer to the eBird API documentation for valid location codes.
+
+## 🧪 Development
+
+### Running Tests
 
 ```bash
-# Install UV (if not already installed)
-curl -LsSf https://astral.sh/uv/install.sh | sh
+# Run all tests
+uv run pytest
 
-# Install project dependencies
-uv sync
+# Run with coverage
+uv run pytest --cov=bird_finder --cov-report=html
 ```
 
-## Usage
-
-1. Use `uv run` to execute commands in the project environment
-2. Ingest data from ebirdapi `~/orchestration/assets/ebirdapi$ uv run python ebirdapi.py `
-3. Create staging layer files `~/$ uv run gen-staging {file-path-to-ebirdapi_source.schema.yaml}`
-4. Materialize staging layer `~/transformation$ uv run dbt run`
-5. Update staging layer docs `~/transformations$ uv run dbt-osmosis yaml refactor --fqn staging`
-
-You can specify the location code using the `loc_code` parameter. Please refer to the eBird API documentation for valid location codes.
-
-## Development
-
-To install development dependencies and set up a development environment, use:
+### Code Quality
 
 ```bash
-uv sync --dev
+# Format code
+uv run black .
+uv run isort .
+
+# Lint code
+uv run flake8
+uv run mypy
 ```
 
-## Contributions
+### Pre-commit Hooks
 
-Feel free to contribute to the project by opening issues or submitting pull requests.
+```bash
+# Install pre-commit hooks
+uv run pre-commit install
 
-## Authors
-
-- Connor Lough
-
-## Roadmap
-
-1. Containerize assets and orchestrator
-
-## Acknowledgements
-
-Special thanks to the eBird API for providing the data.
-
+# Run hooks manually
+uv run pre-commit run --all-files
 ```
 
-Feel free to add any additional information, guidelines, or documentation that might be relevant to your project. If you have specific instructions or caveats that are not covered here, be sure to include those as well.
+## 🗂 Data Sources
+
+- **eBird API**: Real-time bird observation data
+- **Location Codes**: Configurable geographic regions for data collection
+
+## 🚧 Roadmap
+
+- [ ] Containerize application components
+- [ ] Implement incremental data streaming
+- [ ] Add more data sources beyond eBird
+- [ ] Machine learning models for bird prediction
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute to this project.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgements
+
+- [eBird](https://ebird.org/) for providing comprehensive bird observation data
+- [DLT](https://dlthub.com/) for modern data loading capabilities
+- [Dagster](https://dagster.io/) for data orchestration
+- [DBT](https://www.getdbt.com/) for data transformation framework
+
+## 📧 Contact
+
+flocka_birdz@pm.me
+
+Project Link: [https://github.com/doctacon/bird-finder-app](https://github.com/doctacon/bird-finder-app)

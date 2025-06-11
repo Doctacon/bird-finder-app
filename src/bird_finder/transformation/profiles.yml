@@ -1,0 +1,7 @@
+bird_finder:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: '../../../ebirdapi.duckdb'
+      schema: 'transformations'

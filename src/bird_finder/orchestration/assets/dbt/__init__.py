@@ -4,7 +4,7 @@ from pathlib import Path
 from dagster import AssetExecutionContext, load_assets_from_modules
 from dagster_dbt import DbtCliResource, dbt_assets, DagsterDbtTranslator, DagsterDbtTranslatorSettings
 
-dbt_project_dir = Path(__file__).joinpath("..", "..", "..", "..", "transformation").resolve()
+dbt_project_dir = Path(__file__).parents[3] / "transformation"
 dbt = DbtCliResource(project_dir=os.fspath(dbt_project_dir))
 
 # If DAGSTER_DBT_PARSE_PROJECT_ON_LOAD is set, a manifest will be created at run time.

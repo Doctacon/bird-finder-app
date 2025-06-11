@@ -1,13 +1,12 @@
+# Bird Finder App - DBT Project Configuration
+# This project transforms raw eBird API data into analytics-ready models
 
-# Name your project! Project names should contain only lowercase characters
-# and underscores. A good package name should reflect your organization's
-# name or the intended use of these models
-name: 'transformation'
+name: 'bird_finder_transformations'
 version: '1.0.0'
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'birdfinder'
+profile: 'bird_finder'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -30,8 +29,17 @@ vars:
       schema: "ebirdapi_data"
 
 models:
-  transformation:
+  bird_finder_transformations:
     +dbt-osmosis: "docs/{model}.yml"
     staging:
+      +materialized: view
+      +docs:
+        node_color: "lightblue"
     dimensions:
+      +materialized: table
+      +docs:
+        node_color: "lightgreen"
     facts:
+      +materialized: table
+      +docs:
+        node_color: "orange"
