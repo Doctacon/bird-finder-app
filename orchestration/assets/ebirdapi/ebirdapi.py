@@ -1,7 +1,7 @@
 import dlt
 from dagster import AssetExecutionContext, SourceAsset, AssetKey
 from dlt.sources.helpers import requests
-from dagster_embedded_elt.dlt import DagsterDltResource, dlt_assets, DagsterDltTranslator
+from dagster_dlt import DagsterDltResource, dlt_assets, DagsterDltTranslator
 
 from typing import Iterable
 from datetime import datetime
@@ -99,7 +99,6 @@ class EbirdDagsterDltTranslator(DagsterDltTranslator):
         progress="log",
     ),
     name="ebird_api",
-    dlt_dagster_translator=EbirdDagsterDltTranslator(),
 )
 def dagster_ebirdapi_assets(context: AssetExecutionContext, dlt: DagsterDltResource):
     yield from dlt.run(context=context)
