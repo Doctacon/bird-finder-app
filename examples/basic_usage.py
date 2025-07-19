@@ -16,22 +16,24 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 try:
     from bird_finder import __version__, orchestration, scripts, utils
-    
+
     def main():
         """Main example function."""
         print(f"Bird Finder App v{__version__}")
         print("=" * 40)
-        
+
         print("\n📦 Available modules:")
         print(f"  - Orchestration: {orchestration}")
         print(f"  - Scripts: {scripts}")
         print(f"  - Utils: {utils}")
-        
+
         print("\n🚀 To run the data pipeline:")
         print("  1. Run: uv run python -m bird_finder.orchestration.assets.ebirdapi")
         print("  2. Generate staging: uv run gen-staging <schema-file>")
-        print("  3. Transform data: cd src/bird_finder/transformation && uv run dbt run")
-        
+        print(
+            "  3. Transform data: cd src/bird_finder/transformation && uv run dbt run"
+        )
+
         print("\n📖 For more information, see the README.md")
 
     if __name__ == "__main__":
@@ -40,4 +42,4 @@ try:
 except ImportError as e:
     print(f"Error importing modules: {e}")
     print("Make sure to install the package first: uv sync")
-    sys.exit(1) 
+    sys.exit(1)

@@ -35,6 +35,7 @@ dependencies = [
     "numpy>=1.26,<2.0",
     "psutil>=6.0.0",
     "ruff>=0.12.4",
+    "mypy>=1.16.0",
 ]
 
 [project.urls]
@@ -45,17 +46,6 @@ Issues = "https://github.com/your-username/bird-finder-app/issues"
 
 [project.scripts]
 gen-staging = "bird_finder.scripts.staging:main"
-
-[project.optional-dependencies]
-dev = [
-    "pytest>=7.0.0",
-    "pytest-cov>=4.0.0",
-    "black>=23.0.0",
-    "isort>=5.12.0",
-    "flake8>=6.0.0",
-    "mypy>=1.5.0",
-    "pre-commit>=3.0.0",
-]
 
 [build-system]
 requires = ["hatchling"]

@@ -21,4 +21,4 @@ def sample_data_dir(project_root):
 @pytest.fixture
 def temp_dir(tmp_path):
     """Return a temporary directory for test files."""
-    return tmp_path 
+    return tmp_path

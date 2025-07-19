@@ -21,14 +21,11 @@ test-cov: ## Run tests with coverage
 	uv run pytest --cov=bird_finder --cov-report=term-missing --cov-report=html
 
 lint: ## Run all linting tools
-	uv run black --check .
-	uv run isort --check-only .
-	uv run flake8
-	uv run mypy
+	uv run ruff check
 
-format: ## Format code with black and isort
-	uv run black .
-	uv run isort .
+format: ## Format code with ruff
+	uv run ruff check --fix
+	uv run ruff format
 
 pre-commit: ## Run pre-commit hooks
 	uv run pre-commit run --all-files

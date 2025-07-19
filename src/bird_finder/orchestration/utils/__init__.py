@@ -26,17 +26,19 @@ def _random_times(n: int):
             clipped_flipped_dist, clipped_flipped_dist[: n - len(clipped_flipped_dist)]
         )
 
-    return pd.to_datetime((clipped_flipped_dist * (end_u - start_u)) + start_u, unit="s")
+    return pd.to_datetime(
+        (clipped_flipped_dist * (end_u - start_u)) + start_u, unit="s"
+    )
 
 
 def random_data(extra_columns: Dict[str, Any], n: int) -> pd.DataFrame:
     # always have user_id and day
     data = {"user_id": np.random.randint(0, 1000, size=n), "dt": _random_times(n)}
     for name, dtype in extra_columns.items():
-        if dtype == str:
+        if dtype is str:
             data[name] = [uuid.uuid4() for _ in range(n)]
-        elif dtype == int:
+        elif dtype is int:
             data[name] = np.random.randint(0, 100, size=n)
-        elif dtype == float:
+        elif dtype is float:
             data[name] = 100 * np.random.random(size=n)
     return pd.DataFrame(data)

@@ -14,4 +14,4 @@ __email__ = "flocka_birdz@pm.me"
 # Import main modules for easy access
 from bird_finder import orchestration, scripts, utils
 
-__all__ = ["orchestration", "scripts", "utils", "__version__"] 
+__all__ = ["orchestration", "scripts", "utils", "__version__"]

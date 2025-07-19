@@ -5,7 +5,7 @@ from dagster import (
     Definitions,
     ScheduleDefinition,
     define_asset_job,
-    DefaultScheduleStatus
+    DefaultScheduleStatus,
 )
 from dagster_dbt import DbtCliResource
 
@@ -19,7 +19,7 @@ ebird_job = define_asset_job("ebird_job", selection=AssetSelection.all())
 ebird_schedule = ScheduleDefinition(
     job=ebird_job,
     cron_schedule="0 0 * * *",
-    default_status=DefaultScheduleStatus.RUNNING
+    default_status=DefaultScheduleStatus.RUNNING,
 )
 
 defs = Definitions(
@@ -31,6 +31,3 @@ defs = Definitions(
     jobs=[ebird_job],
     schedules=[ebird_schedule],
 )
-
-
-
