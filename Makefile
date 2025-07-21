@@ -49,20 +49,6 @@ dagster: ## Run Dagster
 docs: ## Generate documentation
 	@echo "Documentation generation not yet implemented"
 
-# Data pipeline commands
-pipeline-ingest: ## Run eBird data ingestion
-	uv run python -m bird_finder.orchestration.assets.ebirdapi
-
-pipeline-staging: ## Generate staging layer (requires schema file path)
-	@read -p "Enter schema file path: " schema_path; \
-	uv run gen-staging "$$schema_path"
-
-pipeline-transform: ## Run DBT transformations
-	cd src/bird_finder/transformation && uv run dbt run
-
-pipeline-docs: ## Update DBT documentation
-	cd src/bird_finder/transformation && uv run dbt-osmosis yaml refactor --fqn staging
-
 pipeline-full: pipeline-ingest pipeline-staging pipeline-transform ## Run full data pipeline
 
 # Development workflow
